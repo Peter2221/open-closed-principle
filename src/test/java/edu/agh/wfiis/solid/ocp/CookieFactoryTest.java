@@ -1,8 +1,6 @@
 package edu.agh.wfiis.solid.ocp;
 
-
 import org.junit.Assert;
-import org.junit.Test;
 
 import javax.servlet.http.Cookie;
 
@@ -43,23 +41,5 @@ public class CookieFactoryTest {
         Assert.assertEquals(COOKIE_VALUE, result.getValue());
         Assert.assertEquals("default", result.getName());
         Assert.assertEquals("/applications/" + COOKIE_VALUE, result.getPath());
-    }
-
-    @Test
-    public void testBuilder() {
-        String name = "name";
-        String value = "value";
-        String comment = "smth";
-        boolean secure = true;
-        CustomCookie customCookie = new CustomCookie.Builder(name, value)
-                .maxAge(10)
-                .comment(comment)
-                .secure(secure)
-                .build();
-        Assert.assertNotNull(customCookie);
-        Assert.assertEquals(name, customCookie.getName());
-        Assert.assertEquals(value, customCookie.getValue());
-        Assert.assertEquals(comment, customCookie.getComment());
-        Assert.assertEquals(secure, customCookie.isSecure());
     }
 }

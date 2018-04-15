@@ -1,38 +1,36 @@
 package edu.agh.wfiis.solid.ocp;
 
-import edu.agh.wfiis.solid.ocp.cookiebuilder.DefaultCookieBuilder;
-import edu.agh.wfiis.solid.ocp.cookiebuilder.SessionCookieBuilder;
-import edu.agh.wfiis.solid.ocp.cookiebuilder.IsmCookieBuilder;
+import com.google.common.collect.ImmutableMap;
+import edu.agh.wfiis.solid.ocp.builders.CookieBuilder;
+import edu.agh.wfiis.solid.ocp.builders.DefaultCookieBuilder;
+import edu.agh.wfiis.solid.ocp.builders.SessionCookieBuilder;
+import edu.agh.wfiis.solid.ocp.builders.IsmCookieBuilder;
 
-import java.util.HashMap;
-import java.util.Map;
+public class CookieBuildingStrategy {
 
-public class CookieBuildingStrategy
-{
     private static CookieBuildingStrategy instance;
 
-    private Map<HeaderType, CookieBuilder> strategies = new HashMap<>();
-
-    private CookieBuilder defaultBuilder;
+    private final ImmutableMap<HeaderType, CookieBuilder> builders;
+    private final CookieBuilder defaultBuilder;
 
     public static CookieBuildingStrategy getInstance() {
-        if(instance == null) {
+        if (instance == null) {
             instance = new CookieBuildingStrategy();
         }
         return instance;
     }
 
-    public CookieBuilder get(HeaderType headerType)
-    {
-        return strategies.get(headerType) != null
-                ? strategies.get(headerType)
+    public CookieBuilder get(HeaderType headerType) {
+        return builders.get(headerType) != null
+                ? builders.get(headerType)
                 : defaultBuilder;
     }
 
-    private CookieBuildingStrategy()
-    {
-        defaultBuilder = DefaultCookieBuilder.getInstance();
-        strategies.put(HeaderType.SESSION, SessionCookieBuilder.getInstance());
-        strategies.put(HeaderType.ISM, IsmCookieBuilder.getInstance());
+    private CookieBuildingStrategy() {
+        builders = ImmutableMap.<HeaderType, CookieBuilder>builder()
+                .put(HeaderType.SESSION, new SessionCookieBuilder())
+                .put(HeaderType.ISM, new IsmCookieBuilder())
+                .build();
+        defaultBuilder = new DefaultCookieBuilder();
     }
 }
