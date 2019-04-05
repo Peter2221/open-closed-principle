@@ -1,4 +1,4 @@
-package edu.agh.wfiis.solid.ocp;
+package edu.agh.wfiis.solid.ocp.example1;
 
 
 import org.junit.Assert;
