@@ -2,7 +2,7 @@ package edu.agh.wfiis.solid.ocp.example1;
 
 import javax.servlet.http.Cookie;
 
-public class SessoinBuilder implements CookieTypeBuilder{
+public class SessionBuilder implements CookieTypeBuilder{
 
     @Override
     public Cookie build(HeaderType headerType, String value) {
