@@ -1,9 +1,9 @@
 package edu.agh.wfiis.solid.ocp.example1;
 import javax.servlet.http.Cookie;
 
-public class CookieFacory {
+public final class CookieFacory {
 
-	public Cookie create(CookieCreating CookieCreating, String value) {
-		return CookieCreating.create(value);
+	public Cookie create(CookieCreating cookieCreator, String value) {
+		return cookieCreator.create(value);
 	}
 }
