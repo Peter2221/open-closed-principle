@@ -5,7 +5,7 @@ import javax.servlet.http.Cookie;
 public class DefaultBuilder implements CookieTypeBuilder{
 
     @Override
-    public Cookie build(HeaderType headerType, String value) {
+    public Cookie build(String value) {
         Cookie cookie = new Cookie("default", value);
         cookie.setPath("/applications/" + value);
         return cookie;

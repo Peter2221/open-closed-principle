@@ -4,8 +4,10 @@ import javax.servlet.http.Cookie;
 
 public class SessionBuilder implements CookieTypeBuilder{
 
+    private final HeaderType headerType = HeaderType.SESSION;
+
     @Override
-    public Cookie build(HeaderType headerType, String value) {
+    public Cookie build(String value) {
         Cookie cookie = new Cookie(headerType.name(), value);
         cookie.setMaxAge(1000);
         cookie.setSecure(true);
