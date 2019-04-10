@@ -10,8 +10,8 @@ public class CookieFactory {
         this.cookieCreator = cookieCreator;
     }
 
-    public Cookie create(HeaderType headerType, String value) 
+    public Cookie create(HeaderType headerType, String value)
     {
-        return this.cookieSCreator.create(headerType, value);
+        return this.cookieCreator.create(headerType, value);
     }
 }
