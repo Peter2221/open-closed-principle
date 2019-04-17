@@ -2,13 +2,11 @@ package edu.agh.wfiis.solid.ocp.example2;
 
 public class Calculator {
 
-    public int calculate(String[] args) {
-        int val1 = Integer.valueOf(args[0]);
-        int val2 = Integer.valueOf(args[2]);
-        String operator = args[1];
+    public int calculate(String[] inputData) {
+        MathOperation mathOperation = MathOperationParser.parse(inputData);
 
-        PerformingCalculations calculation = CalculationChooser.chooseCalculation(operator);
-        int result = calculation.calculate(val1, val2);
+        PerformingCalculations calculation = CalculationChooser.chooseCalculation(mathOperation.getOperator());
+        int result = calculation.calculate(mathOperation.getLhsValues(), mathOperation.getRhsValue());
 
         System.out.println(result);
         return result;
