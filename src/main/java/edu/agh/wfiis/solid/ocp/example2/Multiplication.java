@@ -1,4 +1,4 @@
-// package edu.agh.wfiis.solid.ocp.example2;
+package edu.agh.wfiis.solid.ocp.example2;
 
 public class Multiplication implements Calculating {
 
