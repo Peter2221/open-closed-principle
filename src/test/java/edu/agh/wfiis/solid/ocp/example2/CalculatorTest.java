@@ -22,7 +22,7 @@ public class CalculatorTest {
         Assert.assertEquals(-1,result);
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NoOperationException.class)
     public void shouldFailWhenUnsupportedOperandPassed(){
         underTest.calculate(new String[]{"1", "/", "2"});
     }
