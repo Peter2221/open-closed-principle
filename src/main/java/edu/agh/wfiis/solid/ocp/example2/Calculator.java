@@ -13,8 +13,8 @@ public class Calculator {
     }
     
     public int calculate(String[] args) {
-        int leftOperand = Integer.valueOf(args[0]);
-        int rightOperand = Integer.valueOf(args[2]);
+        int leftOperand = Integer.parseInt(args[0]);
+        int rightOperand = Integer.parseInt(args[2]);
         String operator = args[1];
 
         int result;
