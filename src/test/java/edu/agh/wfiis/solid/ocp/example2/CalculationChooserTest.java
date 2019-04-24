@@ -12,26 +12,26 @@ public class CalculationChooserTest {
     private final CalculationChooser underTest = new CalculationChooser();
 
     @Test
-    public void shouldChooseAdditionWhenPlusOperatorPassed(){
-        PerformingCalculations chosenCalculation = underTest.chooseCalculation("+");
-        assertThat(chosenCalculation, instanceOf(Addition.class));
+    public void shouldChooseAdderWhenPlusOperatorPassed(){
+        Calculating chosenCalculation = underTest.chooseCalculation("+");
+        assertThat(chosenCalculation, instanceOf(Adder.class));
     }
 
     @Test
-    public void shouldChooseSubtractionWhenMinusOperatorPassed() {
-        PerformingCalculations chosenCalculation = underTest.chooseCalculation("-");
-        assertThat(chosenCalculation, instanceOf(Subtraction.class));
+    public void shouldChooseSubtractorWhenMinusOperatorPassed() {
+        Calculating chosenCalculation = underTest.chooseCalculation("-");
+        assertThat(chosenCalculation, instanceOf(Subtractor.class));
     }
 
     @Test
-    public void shouldChooseMultiplicationWhenAsteriskOperatorPassed() {
-        PerformingCalculations chosenCalculation = underTest.chooseCalculation("*");
-        assertThat(chosenCalculation, instanceOf(Multiplication.class));
+    public void shouldChooseMultiplicatorWhenAsteriskOperatorPassed() {
+        Calculating chosenCalculation = underTest.chooseCalculation("*");
+        assertThat(chosenCalculation, instanceOf(Multiplicator.class));
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void shouldFailWhenUnsupportedOperatorPassed(){
-        PerformingCalculations chosenCalculation = underTest.chooseCalculation("/");
+        Calculating chosenCalculation = underTest.chooseCalculation("/");
     }
 
 }

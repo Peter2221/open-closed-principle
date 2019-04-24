@@ -5,16 +5,16 @@ import java.util.Map;
 
 public class CalculationChooser {
 
-    private static final Map<String, PerformingCalculations> CALCULATIONS_BY_OPERATORS = new HashMap<>();
+    private static final Map<String, Calculating> CALCULATIONS_BY_OPERATORS = new HashMap<>();
 
     static {
-        CALCULATIONS_BY_OPERATORS.put("+", new Addition());
-        CALCULATIONS_BY_OPERATORS.put("-", new Subtraction());
-        CALCULATIONS_BY_OPERATORS.put("*", new Multiplication());
+        CALCULATIONS_BY_OPERATORS.put("+", new Adder());
+        CALCULATIONS_BY_OPERATORS.put("-", new Subtractor());
+        CALCULATIONS_BY_OPERATORS.put("*", new Multiplicator());
     }
 
-    public static PerformingCalculations chooseCalculation(String operator) {
-        PerformingCalculations chosenCalculation = CALCULATIONS_BY_OPERATORS.get(operator);
+    public static Calculating chooseCalculation(String operator) {
+        Calculating chosenCalculation = CALCULATIONS_BY_OPERATORS.get(operator);
         if (chosenCalculation != null) {
             return chosenCalculation;
         }
