@@ -1,16 +1,18 @@
 package edu.agh.wfiis.solid.ocp.example2;
 
-public class Context
+public class Operations
 {
-	private doingCalculation operation;
+	private static Map<String, doingCalculation> operation;
 
-	public Context(doingCalculation operation)
+	public Operations()
 	{
-		this.operation = operation;
+		operation = new HashMap<>();
+		operation.put("+", new Addition());
+		operation.put("-", new Subtraction());
 	}
 	
-	public int doCalculation(int val1, int val2)
+	public int doCalculation(String operator, int val1, int val2)
 	{
-		return operation.doCalculation(val1, val2);
+		return operation.get(operator).doCalculation(val1, val2);
 	}
 }
