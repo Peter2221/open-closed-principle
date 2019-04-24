@@ -3,18 +3,18 @@ package edu.agh.wfiis.solid.ocp.example2;
 import java.util.HashMap;
 
 public class Calculator {
-    private HashMap<String, CalculationStrategy> mapOfOperations;
+    private HashMap<String, Calculable> mapOfOperations;
 
     public Calculator(){
         this.mapOfOperations = new HashMap<>();
-        mapOfOperations.put("+", new AddValuesCalculation());
-        mapOfOperations.put("-", new SubstractValuesCalculation());
-        mapOfOperations.put("*", new MultiplyValuesCalculation());
+        mapOfOperations.put("+", new AddValues());
+        mapOfOperations.put("-", new SubstractValues());
+        mapOfOperations.put("*", new MultiplyValues());
     }
     
     public int calculate(String[] args) {
-        int val1 = Integer.valueOf(args[0]);
-        int val2 = Integer.valueOf(args[2]);
+        int leftOperand = Integer.valueOf(args[0]);
+        int rightOperand = Integer.valueOf(args[2]);
         String operator = args[1];
 
         int result;
@@ -22,14 +22,13 @@ public class Calculator {
             throw new IllegalArgumentException(operator + " is not supported");
         }
 
-        CalculationStrategy strategy = mapOfOperations.get(operator);
-        result = strategy.doCalculation(val1, val2);
-        System.out.println(result);
+        Calculable strategy = mapOfOperations.get(operator);
+        result = strategy.doCalculation(leftOperand, rightOperand);
         return result;
     }
 
     public static void main(String[] args) {
         Calculator calculator = new Calculator();
-        calculator.calculate(args);
+        System.out.println(calculator.calculate(args));
     }
 }
