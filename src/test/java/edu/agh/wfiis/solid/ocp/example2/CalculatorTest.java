@@ -1,4 +1,3 @@
-
 package edu.agh.wfiis.solid.ocp.example2;
 
 import org.junit.Assert;
@@ -27,10 +26,5 @@ public class CalculatorTest {
     public void shouldMultiplyValues(){
         int result = underTest.calculate(new String[]{"2", "*", "3"});
         Assert.assertEquals(6,result);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void shouldFailWhenUnsupportedOperandPassed(){
-        underTest.calculate(new String[]{"1", "/", "2"});
     }
 }
