@@ -1,7 +1,6 @@
 package edu.agh.wfiis.solid.ocp.example1;
 
 import javax.servlet.http.Cookie;
-import java.util.HashMap;
 import java.util.Map;
 
 interface CookieCreator {
